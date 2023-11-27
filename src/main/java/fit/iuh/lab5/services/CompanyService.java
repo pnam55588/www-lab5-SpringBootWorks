@@ -2,8 +2,10 @@ package fit.iuh.lab5.services;
 
 import fit.iuh.lab5.models.Address;
 import fit.iuh.lab5.models.Candidate;
+import fit.iuh.lab5.models.Company;
 import fit.iuh.lab5.repositories.AddressRepository;
 import fit.iuh.lab5.repositories.CandidateRepository;
+import fit.iuh.lab5.repositories.CompanyRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -16,27 +18,27 @@ import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class CandidateService {
+public class CompanyService {
     @Autowired
-    private CandidateRepository candidateRepository;
+    private CompanyRepository companyRepository;
     @Autowired
     private AddressRepository addressRepository;
 
-    public Page<Candidate> findAll(int pageNo, int pageSize, String sortBy, String sortDirection){
+    public Page<Company> findAll(int pageNo, int pageSize, String sortBy, String sortDirection){
         Sort sort = Sort.by(Sort.Direction.fromString(sortDirection),sortBy);
         Pageable pageable = PageRequest.of(pageNo,pageSize,sort);
-        return  candidateRepository.findAll(pageable);
+        return  companyRepository.findAll(pageable);
     };
 
-    public Candidate save(Candidate candidate) {
-        return candidateRepository.save(candidate);
+    public Company save(Company company) {
+        return companyRepository.save(company);
     }
 
     public Address saveAddress(Address address) {
         return addressRepository.save(address);
     }
 
-    public Optional<Candidate> findById(long id) {
-        return candidateRepository.findById(id);
+    public Optional<Company> findById(long id) {
+        return companyRepository.findById(id);
     }
 }

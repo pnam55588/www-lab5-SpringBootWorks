@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Company</title>
+    <STYLE>
+        /* Apply basic styling to the form */
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f8f8f8;
+        }
+
+        /* Style for labels */
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        /* Style for input fields */
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        /* Style for submit button */
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Change the cursor on hover for the submit button */
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+    </STYLE>
+</head>
+<body>
+<h1 align="center">Add Candidate</h1>
+    <form th:action="@{/add-company}" method="post" th:object="${company}">
+        <label>name:</label>
+        <input name="name" placeholder="name" th:field="*{name}">
+        <label>about:</label>
+        <input name="about" placeholder="about" th:field="*{about}">
+        <div th:object="${address}">
+            <label>city:</label>
+            <input name="city" placeholder="city" th:field="*{city}">
+            <label>country:</label>
+            <select th:field="*{country}">
+                <option th:each="country :${countries}" th:value="${country}" th:text="${country}"></option>
+            </select>
+            <label>zipcode:</label>
+            <input name="zipcode" placeholder="zipcode" th:field="*{zipcode}">
+            <label>street:</label>
+            <input name="street" placeholder="street" th:field="*{street}">
+            <label>number:</label>
+            <input name="number" placeholder="number" th:field="*{number}">
+        </div>
+        <label>phone:</label>
+        <input name="phone" placeholder="phone" th:field="*{phone}">
+        <label>webURL:</label>
+        <input name="webURL" placeholder="webURL" th:field="*{webURL}">
+        <label>email:</label>
+        <input name="email" placeholder="email" th:field="*{email}">
+        <input type="submit" value="add">
+    </form>
+</body>
+</html>

@@ -8,6 +8,7 @@ import lombok.*;
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Entity
 @Table(name = "address")
 public class Address {
@@ -23,7 +24,7 @@ public class Address {
     private String zipcode;
     @Column(name = "street",columnDefinition = "varchar(150)")
     private String street;
-    @OneToOne(mappedBy = "address", fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "address")
     @JsonBackReference
     private Candidate candidate;
     @Column(name = "number",columnDefinition = "varchar(20)")

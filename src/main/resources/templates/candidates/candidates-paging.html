@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <style>
     div.inline {
         color: black;
@@ -35,6 +35,16 @@ C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
 <h1 class="text-center">LIST CANDIDATES</h1>
 <table class="table table-hover">
     <thead>
+    <tr>
+
+    <th>id</th>
+    <th>fullName</th>
+    <th>dob</th>
+    <th>address</th>
+    <th>phone</th>
+    <th>email</th>
+    <th><div class = "row"><a th:href="@{/candidate-add}">Add a new Candidate</a></div></th>
+    </tr>
     </thead>
     <tbody>
     <tr th:each="candidate, iStat : ${candidatePage.content}"
@@ -43,11 +53,11 @@ C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
         <td th:text="${candidate.id}"></td>
         <td th:text="${candidate.fullName}"></td>
         <td th:text="${candidate.dob}"></td>
-        <td th:text="${candidate.address}"></td>
+        <td th:if="${candidate.address!= null}" th:text="${candidate.address.country}"></td> <td th:unless="${candidate.address != null}">N/A</td>
         <td th:text="${candidate.phone}"></td>
         <td th:text="${candidate.email}"></td>
-        <td><a th:href="@{/edit/{id}(id=${candidate.id})}">Edit</a></td>
-        <td><a th:href="@{/delete/{id}(id=${candidate.id})}">Delete</a></td>
+        <td><a th:href="@{/candidate-edit/{id}(id=${candidate.id})}">Edit</a></td>
+<!--        <td><a th:href="@{/delete/{id}(id=${candidate.id})}">Delete</a></td>-->
     </tr>
     </tbody>
 </table>

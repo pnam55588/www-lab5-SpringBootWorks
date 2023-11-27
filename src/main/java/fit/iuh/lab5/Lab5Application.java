@@ -30,7 +30,7 @@ public class Lab5Application {
 	private final JobSkillRepository jobSkillRepository;
 	private final CompanyRepository companyRepository;
 
-	//	@Bean
+//		@Bean
 	CommandLineRunner initCandidates(CandidateRepository candidateRepository){
 		return args -> {
 			Random random = new Random();
@@ -52,7 +52,7 @@ public class Lab5Application {
 			}
 		};
 	}
-	@Bean
+//	@Bean
 	CommandLineRunner initCompanies(){
 		return args -> {
 			Random random = new Random();
@@ -80,6 +80,7 @@ public class Lab5Application {
 
 				System.out.println("lan b"+i);
 				Company com = new Company();
+				com.setName("company_"+i);
 				com.setPhone(random.nextInt(random.nextInt(111111111,999999999))+"");
 				com.setEmail("company_"+i+"@gmail.com");
 				com.setAddress(a);

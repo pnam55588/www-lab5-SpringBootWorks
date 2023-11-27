@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Candidate</title>
+    <STYLE>
+        /* Apply basic styling to the form */
+        form {
+            max-width: 400px;
+            margin: 20px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f8f8f8;
+        }
+
+        /* Style for labels */
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        /* Style for input fields */
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        /* Style for submit button */
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Change the cursor on hover for the submit button */
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+    </STYLE>
+</head>
+<body>
+<h1 align="center">Edit Candidate</h1>
+<form th:action="@{/edit-candidate}" method="post" th:object="${candidate}">
+    <label>id:</label>
+    <input name="id" placeholder="id" th:field="*{id}" readonly>
+    <label>fullName:</label>
+    <input name="fullName" placeholder="fullName" th:field="*{fullName}">
+    <label>dob:</label>
+    <input type="date" name="dob" placeholder="dob" th:field="*{dob}" th:data="${candidate.dob}">
+    <div >
+        <label>id address:</label>
+        <input name="id address" placeholder="id address" th:field="*{address.id}" readonly>
+        <label>city:</label>
+        <input name="city" placeholder="city" th:field="*{address.city}">
+        <label>country:</label>
+        <select th:field="*{address.country}">
+            <option th:each="country :${countries}" th:value="${country}" th:text="${country}"></option>
+        </select>
+        <label>zipcode:</label>
+        <input name="zipcode" placeholder="zipcode" th:field="*{address.zipcode}">
+        <label>street:</label>
+        <input name="street" placeholder="street" th:field="*{address.street}">
+        <label>number:</label>
+        <input name="number" placeholder="number" th:field="*{address.number}">
+    </div>
+    <label>phone:</label>
+    <input name="phone" placeholder="phone" th:field="*{phone}">
+    <label>email:</label>
+    <input name="email" placeholder="email" th:field="*{email}">
+    <input type="submit" value="edit">
+</form>
+</body>
+</html>
