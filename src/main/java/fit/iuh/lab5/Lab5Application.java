@@ -50,26 +50,22 @@ public class Lab5Application {
 				addressRepository.save(a);
 				candidateRepository.save(can);
 			}
-		};
-	}
-//	@Bean
-	CommandLineRunner initCompanies(){
-		return args -> {
-			Random random = new Random();
-
 			Skill sk1= new Skill();
 			sk1.setSkillName("java");
 			sk1.setSkillType(SkillType.TECHNICAL_SKILL);
 			sk1.setSkillDescription("skill init");
 			skillRepository.save(sk1);
 			Skill sk2= new Skill();
-			sk2.setSkillName("spring boot");
-			sk2.setSkillType(SkillType.TECHNICAL_SKILL);
+			sk2.setSkillName("writing");
+			sk2.setSkillType(SkillType.SOFT_SKILL);
 			sk2.setSkillDescription("skill init");
 			skillRepository.save(sk2);
+			Skill sk3= new Skill();
+			sk3.setSkillName("sales");
+			sk3.setSkillType(SkillType.UNSPECIFIC);
+			sk3.setSkillDescription("skill init");
+			skillRepository.save(sk3);
 			for(int i=0;i<100;i++){
-
-				System.out.println("lan a"+i);
 				Address a = new Address();
 				a.setCity("Ha Noi");
 				a.setCountry(CountryCode.VN);
@@ -78,7 +74,6 @@ public class Lab5Application {
 				a.setNumber(random.nextInt(1,10000)+"");
 				addressRepository.save(a);
 
-				System.out.println("lan b"+i);
 				Company com = new Company();
 				com.setName("company_"+i);
 				com.setPhone(random.nextInt(random.nextInt(111111111,999999999))+"");
@@ -88,23 +83,22 @@ public class Lab5Application {
 				com.setAbout("company init");
 				companyRepository.save(com);
 
-				System.out.println("lan c"+i);
-
 				Job job = new Job();
 				job.setCompany(com);
 				job.setName("job "+i);
 				job.setDescription("job init");
 				jobRepository.save(job);
-				System.out.println(job);
 
-				System.out.println("lan e"+i);
 				JobSkill jobSkill = new JobSkill();
 				jobSkill.setSkillLevel(SkillLevel.IMTERMEDIATE);
 				jobSkill.setJob(job);
-				jobSkill.setSkill(sk1);
+				int rd = random.nextInt(3)+1;
+//				jobSkill.setSkill(sk1);
+				if(rd==1) jobSkill.setSkill(sk1);
+				if(rd==2) jobSkill.setSkill(sk2);
+				if(rd==3) jobSkill.setSkill(sk3);
 				jobSkill.setMoreInfo("init");
 				jobSkillRepository.save(jobSkill);
-				System.out.println(jobSkill);
 			}
 		};
 	}
