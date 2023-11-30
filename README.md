@@ -2,7 +2,8 @@
 # Database diagram
 ![image](https://github.com/pnam55588/www-lab5-SpringBootWorks/assets/98084540/20f50b0e-11b8-4664-be68-6b3e12191cf8)
 # Usecase diagram
-![image](https://github.com/pnam55588/www-lab5-SpringBootWorks/assets/98084540/7b9f9ee2-25dd-402a-85b3-8bbfa852a19b)
+![image](https://github.com/pnam55588/www-lab5-SpringBootWorks/assets/98084540/f8d5d461-7830-4ef9-a84c-822e5e4cbe8d)
+
 # Pages
 ## Candidates page
 ![image](https://github.com/pnam55588/www-lab5-SpringBootWorks/assets/98084540/9259c9f7-a6a7-40de-b99a-cad7c4268470)
